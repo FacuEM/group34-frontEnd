@@ -3,18 +3,48 @@ import {
   DELETE_POST,
   FETCH_POSTS,
   FETCH_SINGLE_POST,
+  EDIT_POST,
 } from "./constants";
 import axios from "axios";
 
-export const creteNewPost = (data) => ({
-  type: CREATE_NEW_POST,
-  payload: data,
-});
+export const createNewPost = (title, body) => (dispatch) => {
+  axios
+    .post("https://jsonplaceholder.typicode.com/posts", { title, body })
+    .then((response) =>
+      dispatch({
+        type: CREATE_NEW_POST,
+        payload: response.data,
+      })
+    )
+    .catch((error) => console.log(error));
+};
 
-export const deletePost = (id) => ({
-  type: DELETE_POST,
-  payload: id,
-});
+export const deletePost = (id) => (dispatch) => {
+  axios
+    .delete(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then(() =>
+      dispatch({
+        type: DELETE_POST,
+        payload: id,
+      })
+    )
+    .catch((error) => console.log(error));
+};
+
+export const editPost = (id, title, body) => (dispatch) => {
+  axios
+    .put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+      title,
+      body,
+    })
+    .then((response) => {
+      dispatch({
+        type: EDIT_POST,
+        payload: response.data,
+      });
+    })
+    .catch((error) => console.log(error));
+};
 
 export const fetchPosts = () => (dispatch) => {
   axios

@@ -3,6 +3,7 @@ import {
   DELETE_POST,
   FETCH_POSTS,
   FETCH_SINGLE_POST,
+  EDIT_POST,
 } from "./constants";
 
 const initialState = {
@@ -18,6 +19,9 @@ export default function (state = initialState, action) {
       return {
         posts: [...state.posts.filter((post) => post.id !== action.payload)],
       };
+    case EDIT_POST:
+      console.log(action.payload);
+      return { ...state, post: action.payload };
     case FETCH_POSTS:
       return { ...state, posts: action.payload };
     case FETCH_SINGLE_POST:

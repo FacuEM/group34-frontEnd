@@ -28,7 +28,9 @@ const Main = () => {
                 <h1>{p.title}</h1>
                 <div className={styles.postActions}>
                   <Link to={`/post/${p.id}`}>Read more</Link>
-                  <i className="bi bi-pencil-square"></i>
+                  <Link to={`/editPost/${p.id}`}>
+                    <i className="bi bi-pencil-square"></i>
+                  </Link>
                   <i
                     className="bi bi-trash"
                     onClick={(e) => handleDelete(e, p.id)}

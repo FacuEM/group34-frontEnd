@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useInput } from "../../hooks/useInput";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+import { useDispatch } from "react-redux";
+import { createNewPost } from "../../redux/actions";
 import styles from "./newForm.module.scss";
 
 const NewForm = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [error, setError] = useState("");
   const { value: title, bind: bindTitle, reset: resetTitle } = useInput("");
   const { value: body, bind: bindBody, reset: resetBody } = useInput("");
@@ -18,14 +20,7 @@ const NewForm = () => {
       setError("Please enter the body");
     } else {
       try {
-        const newPost = await axios.post(
-          "https://jsonplaceholder.typicode.com/posts",
-          {
-            title,
-            body,
-          }
-        );
-        console.log(newPost);
+        dispatch(createNewPost(title, body));
         history.push("/");
       } catch (error) {
         setError("Please enter a valid title and body");
