@@ -1,0 +1,25 @@
+.container {
+  padding: 10px 20px;
+  display: flex;
+
+  .left,
+  .right {
+    flex: 50%;
+    display: flex;
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  .right {
+    justify-content: flex-end;
+    a {
+      margin-right: 10%;
+      background-color: yellow;
+      padding: 10px 20px;
+      border-radius: 4px;
+    }
+  }
+}

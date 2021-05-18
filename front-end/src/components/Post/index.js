@@ -1,6 +1,7 @@
 import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Navbar from "../Navbar";
 
 const Post = () => {
   let { id } = useParams();
@@ -23,17 +24,20 @@ const Post = () => {
   }, []);
   const { title, body } = post;
   return (
-    <div>
-      {error ? (
-        <h1>{error}</h1>
-      ) : (
-        <div>
-          <h1>{title}</h1>
-          <p>{body}</p>
-          <button onClick={() => history.goBack()}>Go back</button>
-        </div>
-      )}
-    </div>
+    <>
+      <Navbar />
+      <div>
+        {error ? (
+          <h1>{error}</h1>
+        ) : (
+          <div>
+            <h1>{title}</h1>
+            <p>{body}</p>
+            <button onClick={() => history.goBack()}>Go back</button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

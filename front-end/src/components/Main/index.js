@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Navbar from "../Navbar";
 
 const Main = () => {
   const [posts, setPosts] = useState("");
@@ -16,16 +17,19 @@ const Main = () => {
   }, []);
 
   return (
-    <div>
-      {posts
-        ? posts.map((p, i) => (
-            <div key={i}>
-              <h1>{p.title}</h1>
-              <Link to={`/post/${p.id}`}>Read more</Link>
-            </div>
-          ))
-        : null}
-    </div>
+    <>
+      <Navbar />
+      <div>
+        {posts
+          ? posts.map((p, i) => (
+              <div key={i}>
+                <h1>{p.title}</h1>
+                <Link to={`/post/${p.id}`}>Read more</Link>
+              </div>
+            ))
+          : null}
+      </div>
+    </>
   );
 };
 
