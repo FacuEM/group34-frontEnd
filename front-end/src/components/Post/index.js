@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSinglePost } from "../../redux/actions";
@@ -7,7 +7,7 @@ import Navbar from "../Navbar";
 
 const Post = () => {
   let { id } = useParams();
-  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const post = useSelector((state) => state.post);
 
@@ -19,7 +19,9 @@ const Post = () => {
     <>
       <Navbar />
       <div className={styles.container}>
-        {post ? (
+        {Object.keys(post).length < 1 ? (
+          <h1>This post does not exist</h1>
+        ) : (
           <div>
             <h1>{post.title}</h1>
             <p>{post.body}</p>
@@ -27,8 +29,6 @@ const Post = () => {
               <h5>Go back</h5>
             </Link>
           </div>
-        ) : (
-          <h1>{error}</h1>
         )}
       </div>
     </>
