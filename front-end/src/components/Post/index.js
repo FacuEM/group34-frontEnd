@@ -1,11 +1,11 @@
-import { useParams, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import styles from "./post.module.scss";
 import Navbar from "../Navbar";
 
 const Post = () => {
   let { id } = useParams();
-  let history = useHistory();
   const [post, setPost] = useState("");
   const [error, setError] = useState("");
 
@@ -26,14 +26,16 @@ const Post = () => {
   return (
     <>
       <Navbar />
-      <div>
+      <div className={styles.container}>
         {error ? (
           <h1>{error}</h1>
         ) : (
           <div>
             <h1>{title}</h1>
             <p>{body}</p>
-            <button onClick={() => history.goBack()}>Go back</button>
+            <Link to="/">
+              <h5>Go back</h5>
+            </Link>
           </div>
         )}
       </div>
