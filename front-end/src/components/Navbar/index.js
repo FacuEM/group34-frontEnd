@@ -11,7 +11,10 @@ const Navbar = () => {
       </div>
       <div className={styles.right}>
         <Link to="/newPost">
-          <h4>Create a new post</h4>
+          <h4 className={styles.newPostText}>Create a new post</h4>
+          <div className={styles.newPostIcon}>
+            <i class="bi bi-file-earmark-plus"></i>
+          </div>
         </Link>
       </div>
     </div>

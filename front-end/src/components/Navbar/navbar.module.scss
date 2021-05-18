@@ -16,12 +16,36 @@
 
   .right {
     justify-content: flex-end;
+    .newPostIcon {
+      display: none;
+    }
     a {
       margin-right: 10%;
       background-color: rgb(65, 76, 80);
       padding: 10px 20px;
       border-radius: 4px;
       margin-top: 5px;
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  h1 {
+    font-size: 20px;
+  }
+  .right {
+    justify-content: flex-end;
+    .newPostIcon {
+      display: block !important;
+    }
+
+    .newPostText {
+      display: none;
+    }
+    a {
+      background-color: rgb(25, 36, 40) !important;
+      padding: 0px 0px !important;
+      font-size: 20px !important;
     }
   }
 }
