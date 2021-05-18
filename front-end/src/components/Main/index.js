@@ -1,28 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { fetchPosts, deletePost } from "../../redux/actions";
 import styles from "./main.module.scss";
 import Navbar from "../Navbar";
 
 const Main = () => {
-  const [posts, setPosts] = useState("");
+  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      let response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
-      setPosts(response.data);
-    };
-    fetchPosts();
+    dispatch(fetchPosts());
   }, []);
 
   const handleDelete = async (e, id) => {
     e.preventDefault();
-    const response = await axios.delete(
-      `https://jsonplaceholder.typicode.com/posts/${id}`
-    );
-    console.log(response);
+    dispatch(deletePost(id));
   };
 
   return (

@@ -1,42 +1,34 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSinglePost } from "../../redux/actions";
 import styles from "./post.module.scss";
 import Navbar from "../Navbar";
 
 const Post = () => {
   let { id } = useParams();
-  const [post, setPost] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const post = useSelector((state) => state.post);
 
   useEffect(() => {
-    const fetchPost = async () => {
-      try {
-        let response = await axios.get(
-          `https://jsonplaceholder.typicode.com/posts/${id}`
-        );
-        setPost(response.data);
-      } catch (error) {
-        setError("The post you are looking for does not exist");
-      }
-    };
-    fetchPost();
+    dispatch(fetchSinglePost(id));
   }, []);
-  const { title, body } = post;
+
   return (
     <>
       <Navbar />
       <div className={styles.container}>
-        {error ? (
-          <h1>{error}</h1>
-        ) : (
+        {post ? (
           <div>
-            <h1>{title}</h1>
-            <p>{body}</p>
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
             <Link to="/">
               <h5>Go back</h5>
             </Link>
           </div>
+        ) : (
+          <h1>{error}</h1>
         )}
       </div>
     </>
