@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import styles from "./main.module.scss";
 import Navbar from "../Navbar";
 
 const Main = () => {
@@ -19,10 +20,10 @@ const Main = () => {
   return (
     <>
       <Navbar />
-      <div>
+      <div className={styles.container}>
         {posts
           ? posts.map((p, i) => (
-              <div key={i}>
+              <div className={styles.postDiv} key={i}>
                 <h1>{p.title}</h1>
                 <Link to={`/post/${p.id}`}>Read more</Link>
               </div>

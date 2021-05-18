@@ -1,6 +1,7 @@
 .container {
   padding: 10px 20px;
   display: flex;
+  background-color: rgb(25, 36, 40);
 
   .left,
   .right {
@@ -9,7 +10,7 @@
 
     a {
       text-decoration: none;
-      color: black;
+      color: white;
     }
   }
 
@@ -17,7 +18,7 @@
     justify-content: flex-end;
     a {
       margin-right: 10%;
-      background-color: yellow;
+      background-color: rgb(65, 76, 80);
       padding: 10px 20px;
       border-radius: 4px;
     }
