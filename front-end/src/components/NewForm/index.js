@@ -25,6 +25,7 @@ const NewForm = () => {
             body,
           }
         );
+        console.log(newPost);
         history.push("/");
       } catch (error) {
         setError("Please enter a valid title and body");

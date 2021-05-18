@@ -17,6 +17,14 @@ const Main = () => {
     fetchPosts();
   }, []);
 
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    const response = await axios.delete(
+      `https://jsonplaceholder.typicode.com/posts/${id}`
+    );
+    console.log(response);
+  };
+
   return (
     <>
       <Navbar />
@@ -27,8 +35,11 @@ const Main = () => {
                 <h1>{p.title}</h1>
                 <div className={styles.postActions}>
                   <Link to={`/post/${p.id}`}>Read more</Link>
-                  <i class="bi bi-pencil-square"></i>
-                  <i class="bi bi-trash"></i>
+                  <i className="bi bi-pencil-square"></i>
+                  <i
+                    className="bi bi-trash"
+                    onClick={(e) => handleDelete(e, p.id)}
+                  ></i>
                 </div>
               </div>
             ))
