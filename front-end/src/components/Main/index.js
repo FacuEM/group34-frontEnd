@@ -25,7 +25,11 @@ const Main = () => {
           ? posts.map((p, i) => (
               <div className={styles.postDiv} key={i}>
                 <h1>{p.title}</h1>
-                <Link to={`/post/${p.id}`}>Read more</Link>
+                <div className={styles.postActions}>
+                  <Link to={`/post/${p.id}`}>Read more</Link>
+                  <i class="bi bi-pencil-square"></i>
+                  <i class="bi bi-trash"></i>
+                </div>
               </div>
             ))
           : null}

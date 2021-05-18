@@ -6,12 +6,23 @@
     background-color: rgb(45, 56, 60);
     margin-bottom: 10px;
     border-radius: 4px;
-    padding: 7px;
+    padding: 10px 15px;
 
-    a {
-      text-decoration: none;
-      color: white;
-      cursor: pointer;
+    .postActions {
+      margin-top: 5px;
+      display: flex;
+      justify-content: flex-end;
+
+      a {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        margin-right: 15px;
+      }
+      i {
+        cursor: pointer;
+        margin-right: 10px;
+      }
     }
   }
 }
